@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.DwgTableMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.DwgTable">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="dwg_name" jdbcType="VARCHAR" property="dwgName" />
+    <result column="dwg_code" jdbcType="VARCHAR" property="dwgCode" />
+    <result column="part_number" jdbcType="VARCHAR" property="partNumber" />
+    <result column="designer" jdbcType="VARCHAR" property="designer" />
+    <result column="auditor" jdbcType="VARCHAR" property="auditor" />
+    <result column="approver" jdbcType="VARCHAR" property="approver" />
+    <result column="designer_time" jdbcType="TIMESTAMP" property="designerTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="audit_time" jdbcType="TIMESTAMP" property="auditTime" />
+    <result column="approve_time" jdbcType="TIMESTAMP" property="approveTime" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="dwg_type_code" jdbcType="INTEGER" property="dwgTypeCode" />
+    <result column="part_type_code" jdbcType="INTEGER" property="partTypeCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, dwg_name, dwg_code, part_number, designer, auditor, approver, designer_time, 
+    update_time, audit_time, approve_time, count, dwg_type_code, part_type_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dwg_table
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dwg_table
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.DwgTable">
+    insert into dwg_table (id, dwg_name, dwg_code, 
+      part_number, designer, auditor, 
+      approver, designer_time, update_time, 
+      audit_time, approve_time, count, 
+      dwg_type_code, part_type_code)
+    values (#{id,jdbcType=INTEGER}, #{dwgName,jdbcType=VARCHAR}, #{dwgCode,jdbcType=VARCHAR}, 
+      #{partNumber,jdbcType=VARCHAR}, #{designer,jdbcType=VARCHAR}, #{auditor,jdbcType=VARCHAR}, 
+      #{approver,jdbcType=VARCHAR}, #{designerTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{auditTime,jdbcType=TIMESTAMP}, #{approveTime,jdbcType=TIMESTAMP}, #{count,jdbcType=INTEGER}, 
+      #{dwgTypeCode,jdbcType=INTEGER}, #{partTypeCode,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.DwgTable">
+    insert into dwg_table
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="dwgName != null">
+        dwg_name,
+      </if>
+      <if test="dwgCode != null">
+        dwg_code,
+      </if>
+      <if test="partNumber != null">
+        part_number,
+      </if>
+      <if test="designer != null">
+        designer,
+      </if>
+      <if test="auditor != null">
+        auditor,
+      </if>
+      <if test="approver != null">
+        approver,
+      </if>
+      <if test="designerTime != null">
+        designer_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="auditTime != null">
+        audit_time,
+      </if>
+      <if test="approveTime != null">
+        approve_time,
+      </if>
+      <if test="count != null">
+        count,
+      </if>
+      <if test="dwgTypeCode != null">
+        dwg_type_code,
+      </if>
+      <if test="partTypeCode != null">
+        part_type_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="dwgName != null">
+        #{dwgName,jdbcType=VARCHAR},
+      </if>
+      <if test="dwgCode != null">
+        #{dwgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="partNumber != null">
+        #{partNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="designer != null">
+        #{designer,jdbcType=VARCHAR},
+      </if>
+      <if test="auditor != null">
+        #{auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="approver != null">
+        #{approver,jdbcType=VARCHAR},
+      </if>
+      <if test="designerTime != null">
+        #{designerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditTime != null">
+        #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveTime != null">
+        #{approveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="count != null">
+        #{count,jdbcType=INTEGER},
+      </if>
+      <if test="dwgTypeCode != null">
+        #{dwgTypeCode,jdbcType=INTEGER},
+      </if>
+      <if test="partTypeCode != null">
+        #{partTypeCode,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.DwgTable">
+    update dwg_table
+    <set>
+      <if test="dwgName != null">
+        dwg_name = #{dwgName,jdbcType=VARCHAR},
+      </if>
+      <if test="dwgCode != null">
+        dwg_code = #{dwgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="partNumber != null">
+        part_number = #{partNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="designer != null">
+        designer = #{designer,jdbcType=VARCHAR},
+      </if>
+      <if test="auditor != null">
+        auditor = #{auditor,jdbcType=VARCHAR},
+      </if>
+      <if test="approver != null">
+        approver = #{approver,jdbcType=VARCHAR},
+      </if>
+      <if test="designerTime != null">
+        designer_time = #{designerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditTime != null">
+        audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approveTime != null">
+        approve_time = #{approveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="count != null">
+        count = #{count,jdbcType=INTEGER},
+      </if>
+      <if test="dwgTypeCode != null">
+        dwg_type_code = #{dwgTypeCode,jdbcType=INTEGER},
+      </if>
+      <if test="partTypeCode != null">
+        part_type_code = #{partTypeCode,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.DwgTable">
+    update dwg_table
+    set dwg_name = #{dwgName,jdbcType=VARCHAR},
+      dwg_code = #{dwgCode,jdbcType=VARCHAR},
+      part_number = #{partNumber,jdbcType=VARCHAR},
+      designer = #{designer,jdbcType=VARCHAR},
+      auditor = #{auditor,jdbcType=VARCHAR},
+      approver = #{approver,jdbcType=VARCHAR},
+      designer_time = #{designerTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      approve_time = #{approveTime,jdbcType=TIMESTAMP},
+      count = #{count,jdbcType=INTEGER},
+      dwg_type_code = #{dwgTypeCode,jdbcType=INTEGER},
+      part_type_code = #{partTypeCode,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
